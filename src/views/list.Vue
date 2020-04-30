@@ -1,14 +1,20 @@
 <template>
   <div>
     <div class="jumbotron">
-      <ul>
-        <li v-for="category in categories" :key="category.idCategory">{{ category.strCategory }}</li>
-      </ul>
+      <h1>Category Menu</h1>
+      <div class="row">
+        <CardCategory
+          v-for="category in categories"
+          :key="category.idCategory"
+          :category="category"
+        />
+      </div>
     </div>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import CardCategory from '../components/CardCategory.vue'
 export default {
   data() {
     return {
@@ -16,6 +22,9 @@ export default {
       loading: true,
       errored: false
     }
+  },
+  components: {
+    CardCategory
   },
   mounted() {
     axios
