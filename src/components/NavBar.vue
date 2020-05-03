@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Meal Ways to Heaven</a>
+    <router-link to="/">
+      <span class="navbar-brand">Meal Ways to Heaven</span>
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -25,3 +27,9 @@
     </div>
   </nav>
 </template>
+<style scoped>
+.navbar-brand {
+  cursor: pointer;
+}
+</style
+>style

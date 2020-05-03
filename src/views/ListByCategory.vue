@@ -1,6 +1,5 @@
 <template>
   <div class="jumbotron">
-    <h1>hallo {{ categorySelected }}</h1>
     <div class="row">
       <MenuCard v-for="meal in meals" :key="meal.idmeals" :meal="meal" />
     </div>
@@ -12,19 +11,24 @@ import MenuCard from '../components/menuCard.vue'
 export default {
   data() {
     return {
-      meals: {}
+      meals: {},
+      categorySelected: ''
     }
   },
   components: {
     MenuCard
   },
-  props: { categorySelected: String },
+  created() {
+    let categorySelected = this.$route.params.categorySelected
+  },
   mounted() {
     axios
-      .get('https://www.themealdb.com/api/json/v1/1/filter.php?c=seafood')
+      .get(
+        'https://www.themealdb.com/api/json/v1/1/filter.php?c=' +
+          this.$route.params.categorySelected
+      )
       .then(response => {
         this.meals = response.data.meals
-        console.log(this.data)
       })
       .catch(error => {
         console.log(error)
